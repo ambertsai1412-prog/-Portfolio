@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>快樂製造機 Joy Maker</title>
+  <style>
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      background: linear-gradient(135deg, #fff0f5 0%, #fffdf0 50%, #f0f7ff 100%);
+      font-family: "Poppins", "Noto Sans TC", sans-serif;
+      overflow-x: hidden;
+      color: #444;
+    }
+
+    header {
+      text-align: center;
+      padding: 2.5rem 1rem 1.5rem;
+      animation: fadeIn 1.5s ease;
+    }
+
+    /* --- 標題優化：保留粉色調與愛心原色 --- */
+    header h1 {
+      font-size: 2.2rem;
+      font-weight: 800;
+      /* 使用粉色作為文字基調 */
+      color: #ff9fb2; 
+      margin: 0;
+      display: inline-block;
+      /* 利用多重光暈營造實驗室的流光感，且不影響愛心顯示 */
+      filter: drop-shadow(2px 2px 0px #fff) drop-shadow(4px 4px 10px rgba(251, 182, 206, 0.6));
+      letter-spacing: 1px;
+      animation: softPulse 3s ease-in-out infinite alternate;
+    }
+
+    @keyframes softPulse {
+      from { transform: scale(1); filter: drop-shadow(2px 2px 0px #fff) drop-shadow(4px 4px 10px rgba(251, 182, 206, 0.4)); }
+      to { transform: scale(1.03); filter: drop-shadow(2px 2px 0px #fff) drop-shadow(6px 6px 15px rgba(147, 197, 253, 0.6)); }
+    }
+
+    header p {
+      margin: 10px 0 0;
+      color: #b1949a;
+      font-size: 0.95rem;
+      font-weight: 500;
+    }
+
+    /* --- 佈局容器維持原樣 --- */
+    .container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      max-width: 1050px;
+      margin: 0 auto 60px;
+      gap: 14px;
+      padding: 0 10px;
+    }
+
+    .left, .right {
+      flex: 1 1 480px;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .award-container, .work-container {
+      position: relative;
+      width: 100%;
+      border-radius: 18px;
+      overflow: hidden;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+      cursor: pointer;
+      text-decoration: none;
+      display: block;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .award-container:hover, .work-container:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 12px 25px rgba(0,0,0,0.15);
+    }
+
+    img {
+      width: 100%;
+      display: block;
+      border-radius: 18px;
+      transition: transform 0.5s ease;
+      object-fit: cover;
+    }
+
+    .award-container:hover img, .work-container:hover img {
+      transform: scale(1.08);
+    }
+
+    .award-overlay {
+      position: absolute;
+      top: 0; left: 0; width: 100%; height: 100%;
+      display: flex; flex-direction: column;
+      justify-content: center; align-items: center;
+      color: white; text-align: center; padding: 20px;
+    }
+
+    .award-overlay h3 {
+      margin: 0 0 12px 0; font-size: 1.6rem; letter-spacing: 4px;
+      border-bottom: 2px solid #fde047; padding-bottom: 5px;
+      text-shadow: 2px 2px 10px rgba(0,0,0,0.8);
+    }
+
+    .work-overlay {
+      position: absolute;
+      top: 0; left: 0; width: 100%; height: 100%;
+      display: flex; justify-content: center; align-items: center;
+    }
+
+    .work-overlay span {
+      color: #ffb6c1; 
+      font-size: 1.2rem;
+      font-weight: 700;
+      letter-spacing: 4px;
+      text-shadow: 0 0 8px rgba(255,255,255,0.9), 1px 1px 3px rgba(0,0,0,0.2);
+    }
+
+    .portfolio-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: 1fr 1fr;
+      gap: 12px;
+      width: 100%;
+    }
+
+    .grid-item {
+      text-decoration: none;
+      border-radius: 18px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      border: 1px solid rgba(255, 255, 255, 0.8);
+      transition: all 0.3s ease;
+    }
+
+    .graphic { background: linear-gradient(135deg, #fff5f5 0%, #ffe9ec 100%); }
+    .solid   { background: linear-gradient(135deg, #f0f7ff 0%, #e0efff 100%); }
+    .product { background: linear-gradient(135deg, #fffdf0 0%, #fff9db 100%); }
+    .space   { background: linear-gradient(135deg, #f2fff7 0%, #e6ffed 100%); }
+
+    .grid-item:hover {
+      transform: translateY(-3px);
+      background: #ffffff;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+    }
+
+    .grid-label { color: #777; font-weight: 700; font-size: 1.1rem; letter-spacing: 2px; }
+    .grid-subtext { color: #bbb; font-size: 0.65rem; margin-top: 3px; }
+
+    .intro-box {
+      width: 100%;
+      border-radius: 18px;
+      background-image: url("images/index_05.jpg");
+      background-size: cover;
+      background-position: center;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    }
+
+    .intro-text {
+      font-size: 0.9rem;
+      line-height: 1.6;
+      color: #444;
+      font-weight: 600;
+      max-width: 90%;
+      padding: 15px;
+      background: rgba(255,255,255,0.8);
+      border-radius: 15px;
+      backdrop-filter: blur(8px);
+    }
+
+    .bubble { position: fixed; bottom: -100px; background: rgba(255,255,255,0.4); border-radius: 50%; animation: floatUp 10s infinite ease-in; pointer-events: none; }
+    @keyframes floatUp { 0% { transform: translateY(0) scale(0.8); opacity: 0.6; } 100% { transform: translateY(-120vh) scale(1.4); opacity: 0; } }
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+
+    .btn-float {
+      position: fixed; bottom: 30px; right: 30px;
+      background: linear-gradient(135deg, #fbcfe8, #fef08a, #bfdbfe);
+      border: none; color: #666; padding: 12px 18px; border-radius: 50px;
+      font-weight: 600; cursor: pointer; box-shadow: 0 4px 12px rgba(0,0,0,0.1); z-index: 1000;
+    }
+
+    @media (max-width: 768px) {
+      .container { flex-direction: column; }
+      .left, .right { flex: 1 1 100%; }
+      .portfolio-grid { height: 220px !important; }
+      .intro-box { height: auto !important; min-height: 180px; }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>💛💗🩵 快樂實驗室 Joy Lab 🩵💗💛</h1>
+    <p>用色彩、節奏與笑容，生產出幸福的一天。</p>
+  </header>
+
+  <div class="container">
+    <div class="left">
+      <a href="awards.html" class="award-container" id="award-box">
+        <img src="images/index_01.jpg" alt="得獎紀錄">
+        <div class="award-overlay">
+          <h3>得獎經歷</h3>
+        </div>
+      </a>
+      <img id="img4" src="images/index_04.jpg" alt="生活美學">
+    </div>
+
+    <div class="right">
+      <div id="grid-container" class="portfolio-grid">
+        <a href="page1.html" class="grid-item graphic">
+          <span class="grid-label">平面</span>
+          <span class="grid-subtext">GRAPHIC</span>
+        </a>
+        <a href="../solid.html" class="grid-item solid">
+          <span class="grid-label">立體</span>
+          <span class="grid-subtext">3D ART</span>
+        </a>
+        <a href="../product.html" class="grid-item product">
+          <span class="grid-label">產品</span>
+          <span class="grid-subtext">PRODUCT</span>
+        </a>
+        <a href="page4.html" class="grid-item space">
+          <span class="grid-label">場域</span>
+          <span class="grid-subtext">SPACE</span>
+        </a>
+      </div>
+      
+      <a href="work-photos.html" class="work-container" id="work-box">
+        <img src="images/index_03.jpg" alt="工作照">
+        <div class="work-overlay">
+          <span>工作照</span>
+        </div>
+      </a>
+
+      <div id="intro-box" class="intro-box">
+        <div class="intro-text">
+          我是蔡易倫，來自雲林科技大學創意生活設計系。 喜歡把想像變成真實、用色彩記錄生活。 作品對我而言是快樂的具現，希望透過設計讓每個人都能多擁有一點笑容。
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer style="text-align:center; padding: 20px; color:#aaa;">© 2025 Joy Maker | 蔡易倫</footer>
+
+  <button class="btn-float" onclick="alert('✨ 製造快樂中！')">+ 製造快樂</button>
+
+  <script>
+    function alignLayout() {
+      const awardBox = document.getElementById("award-box");
+      const img4 = document.getElementById("img4");
+      const workBox = document.getElementById("work-box");
+      const grid = document.getElementById("grid-container");
+      const intro = document.getElementById("intro-box");
+
+      if (window.innerWidth > 768) {
+        grid.style.height = awardBox.offsetHeight + "px";
+        const leftTotalHeight = awardBox.offsetHeight + img4.offsetHeight + 14;
+        const rightTopHeight = grid.offsetHeight + workBox.offsetHeight + 14;
+        const targetHeight = leftTotalHeight - rightTopHeight;
+        if (targetHeight > 0) {
+          intro.style.height = targetHeight + "px";
+        }
+      } else {
+        grid.style.height = "220px";
+        intro.style.height = "auto";
+      }
+    }
+
+    window.onload = alignLayout;
+    window.addEventListener("resize", alignLayout);
+
+    setInterval(() => {
+      const bubble = document.createElement("div");
+      bubble.classList.add("bubble");
+      const size = Math.random() * 30 + 10;
+      bubble.style.width = size + "px"; bubble.style.height = size + "px";
+      bubble.style.left = Math.random() * 100 + "vw";
+      document.body.appendChild(bubble);
+      setTimeout(() => bubble.remove(), 8000);
+    }, 1000);
+  </script>
+</body>
+</html>
