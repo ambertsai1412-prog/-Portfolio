@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>光影馬屋 - 蔡易倫作品集</title>
+  <style>
+    /* 全域背景統一 */
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      background: #f9f9f9; 
+      font-family: "Poppins", "Noto Sans TC", sans-serif;
+      color: #444;
+      line-height: 1.8;
+    }
+
+    /* 頂部導覽 */
+    .back-nav {
+      padding: 20px 5%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      background: rgba(249, 249, 249, 0.9); 
+      backdrop-filter: blur(10px);
+      z-index: 100;
+      border-bottom: 1px solid #eee;
+    }
+    .back-nav a { text-decoration: none; color: #88bc9c; font-weight: 700; }
+
+    /* 主容器 */
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 5%;
+    }
+
+    /* 主視覺區 */
+    .hero-section {
+      display: flex;
+      flex-wrap: wrap;
+      margin: 60px 0;
+      gap: 50px;
+    }
+    .hero-image {
+      flex: 1 1 600px;
+      border-radius: 20px;
+      overflow: hidden;
+      background: #fff;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+      min-height: 400px; /* 確保沒圖時也有高度 */
+    }
+    .hero-image img { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+    .hero-text {
+      flex: 1 1 400px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    .tag { color: #88bc9c; font-weight: 700; letter-spacing: 2px; font-size: 0.9rem; margin-bottom: 10px; }
+    h1 { font-size: 2.8rem; margin: 0 0 20px; color: #333; line-height: 1.2; }
+    .description { font-size: 1.05rem; color: #666; text-align: justify; margin-bottom: 30px; }
+
+    /* 資訊欄 */
+    .info-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+      border-top: 1px solid #ddd;
+      padding-top: 20px;
+    }
+    .info-item strong { display: block; color: #88bc9c; font-size: 0.85rem; }
+
+    /* 標題樣式 */
+    .section-header {
+      text-align: center;
+      margin: 100px 0 50px;
+    }
+    .section-header h2 { 
+      font-size: 1.8rem; 
+      color: #333; 
+      display: inline-block;
+      padding-bottom: 10px;
+      border-bottom: 2px solid #88bc9c;
+    }
+
+    /* 設計圖區塊 */
+    .blueprint-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 30px;
+      margin-bottom: 60px;
+    }
+    .blueprint-card {
+      background: white;
+      padding: 15px;
+      border-radius: 15px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.03);
+    }
+    .blueprint-card img { width: 100%; border-radius: 10px; display: block; }
+    .blueprint-card p { text-align: center; margin-top: 15px; color: #888; font-size: 0.9rem; }
+
+    /* 感官體驗區塊 */
+    .experience-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 25px;
+      margin-bottom: 100px;
+    }
+    .exp-card {
+      background: #fff;
+      padding: 25px;
+      border-radius: 20px;
+      border: 1px solid #eee;
+      transition: 0.3s;
+    }
+    .exp-card:hover {
+      border-color: #88bc9c;
+      transform: translateY(-5px);
+      box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+    }
+
+    /* 新增：空間路徑圖片樣式 */
+    .exp-img {
+      width: 100%;
+      height: 220px;
+      object-fit: cover;
+      border-radius: 12px;
+      margin-bottom: 20px;
+      background-color: #f0f0f0;
+    }
+
+    .exp-card h4 { 
+      color: #333; 
+      margin: 0 0 15px; 
+      font-size: 1.2rem;
+      display: flex;
+      align-items: center;
+    }
+    .exp-card h4::before {
+      content: "";
+      width: 8px;
+      height: 8px;
+      background: #88bc9c;
+      border-radius: 50%;
+      margin-right: 12px;
+    }
+    .exp-card p { font-size: 0.95rem; color: #666; margin: 0; }
+    .sense-label { font-size: 0.75rem; color: #88bc9c; font-weight: 700; text-transform: uppercase; margin-bottom: 5px; display: block; }
+
+    footer { text-align: center; padding: 60px 20px; color: #bbb; font-size: 0.9rem; }
+
+    @media (max-width: 768px) {
+      h1 { font-size: 2.2rem; }
+      .hero-section { margin: 30px 0; }
+      .exp-img { height: 180px; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav class="back-nav">
+    <div class="container" style="display: flex; justify-content: space-between; width: 100%; padding: 0;">
+      <a href="page4.html">← Back</a>
+      <span style="color: #bbb;">TSAI, YI-LUN | B11436032</span>
+    </div>
+  </nav>
+
+  <div class="container">
+    
+    <section class="hero-section">
+      
+      <div class="hero-text">
+        <span class="tag">CONCEPT DESIGN</span>
+        <h1>《光影馬屋：追尋自由的旅程》</h1>
+        <p class="description">
+          以今年的「馬」年作為空間靈感，象徵自由、力量與前進的勇氣。從俯視圖將空間轉化為馬的形態，引導使用者隨動線行走，如 同展開一段自我探索的旅程。透過光影與感官體驗，讓人在空間中釋放情緒，找回內心的平衡與自由。
+        </p>
+        <div class="info-grid">
+          <div class="info-item"><strong>設計者</strong>蔡易倫</div>
+          <div class="info-item"><strong>指導</strong>謝子良 老師</div>
+        </div>
+      </div>
+    </section>
+
+    <div class="section-header">
+      <h2>空間配置與分析</h2>
+    </div>
+    <section class="blueprint-grid">
+      <div class="blueprint-card">
+        <img src="images/0007.jpg" alt="平面圖">
+        <p>平面圖 Plan View</p>
+      </div>
+      <div class="blueprint-card">
+        <img src="images/0006.jpg" alt="立面圖">
+        <p>立面圖 Elevation </p>
+      </div>
+      <div class="blueprint-card">
+        <img src="images/0008.jpg" alt="剖面圖">
+        <p>剖面圖 Section</p>
+      </div>
+    </section>
+
+    <div class="section-header">
+      <h2>感官空間路徑</h2>
+    </div>
+    
+    <section class="experience-grid">
+      
+      <div class="exp-card">
+        <img src="images/0009.jpg" alt="鏡面牆" class="exp-img">
+        <span class="sense-label">Stage 01</span>
+        <h4>鏡面牆 (回望)</h4>
+        <p>利用反射看見不同狀態的自我，象徵對過去經驗的審視與對談。</p>
+      </div>
+
+      <div class="exp-card">
+        <img src="images/0012.jpg" alt="光之房" class="exp-img">
+        <span class="sense-label">Stage 02 - 觸覺</span>
+        <h4>光之房 (感受)</h4>
+        <p>陽光灑入，透過身體感受光線的溫度，在溫暖中接納並和自己和解。</p>
+      </div>
+
+      <div class="exp-card">
+        <img src="images/0010.jpg" alt="聲之房" class="exp-img">
+        <span class="sense-label">Stage 03 - 聽覺</span>
+        <h4>聲之房 (內省)</h4>
+        <p>在寂靜與微響的交替中，屏蔽外界雜訊，聆聽靈魂深處最真實的聲音。</p>
+      </div>
+
+      <div class="exp-card">
+        <img src="images/0013.jpg" alt="色彩光譜房" class="exp-img">
+        <span class="sense-label">Stage 04 - 視覺</span>
+        <h4>色彩光譜房 (沉澱)</h4>
+        <p>光影變化的色彩梯度，引導視覺引發的情緒波動逐漸走向平穩與沉澱。</p>
+      </div>
+
+      <div class="exp-card">
+        <img src="images/0011.jpg" alt="記憶氣味" class="exp-img">
+        <span class="sense-label">Stage 05 - 嗅覺</span>
+        <h4>記憶氣味 (喚醒)</h4>
+        <p>藉由特定的氣味觸發大腦深處記憶，在回憶中找尋失落的力量片段。</p>
+      </div>
+
+      <div class="exp-card">
+        <img src="images/0014.jpg" alt="鏡面波浪牆" class="exp-img">
+        <span class="sense-label">Stage 06</span>
+        <h4>鏡面波浪牆 (重生)</h4>
+        <p>透過出口處波浪狀的反射，看見多樣化且新生的自己，勇敢邁向未來。</p>
+      </div>
+
+    </section>
+
+    <footer>
+      <p>© 2025 Joy Maker | 蔡易倫 場域作品集</p>
+    </footer>
+
+  </div>
+
+</body>
+</html>

@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>快樂製造機 Joy Maker - 第二頁</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      background: linear-gradient(135deg, #ffe4ec 0%, #fff7d6 50%, #d8edff 100%);
+      font-family: "Poppins", "Noto Sans TC", sans-serif;
+      overflow-x: hidden;
+      color: #333;
+      transition: background 1s ease;
+      min-height: 100vh;
+    }
+
+    /* --- 返回按鈕樣式 --- */
+    .btn-back {
+      position: fixed;
+      top: 25px;
+      left: 25px;
+      text-decoration: none;
+      color: #777;
+      font-weight: 600;
+      font-size: 0.95rem;
+      padding: 10px 20px;
+      border-radius: 50px;
+      background: rgba(255, 255, 255, 0.4);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      border: 1px solid rgba(255, 255, 255, 0.5);
+      box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+      transition: all 0.3s ease;
+      z-index: 1000;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    .btn-back:hover {
+      background: rgba(255, 255, 255, 0.8);
+      color: #ff9fb2;
+      transform: translateX(-5px);
+      box-shadow: 0 6px 20px rgba(249, 168, 212, 0.2);
+    }
+
+    header {
+      text-align: center;
+      padding: 4rem 1rem 1.5rem;
+      animation: fadeIn 1.5s ease;
+    }
+
+    /* --- 修改重點：與第一頁相同的粉色標題設定 --- */
+    header h1 {
+      font-size: 2.2rem;
+      font-weight: 800;
+      color: #ff9fb2; /* 改回粉色 */
+      letter-spacing: 1px;
+      filter: drop-shadow(1px 1px 0px #fff); /* 確保愛心不消失的小技巧 */
+      margin: 0;
+    }
+
+    header p {
+      font-size: 1.1rem;
+      color: #555;
+      margin-top: 0.5rem;
+    }
+
+    .content {
+      max-width: 1050px;
+      margin: 0 auto 60px;
+      padding: 0 15px;
+      display: flex;
+      flex-direction: column;
+      gap: 30px;
+      animation: fadeIn 1.2s ease;
+    }
+
+    .content img {
+      width: 100%;
+      height: auto;
+      border-radius: 18px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+      transition: transform 0.4s ease, box-shadow 0.4s ease, filter 0.4s ease;
+    }
+
+    .content img:hover {
+      transform: scale(1.04);
+      filter: brightness(1.05);
+      box-shadow: 0 8px 25px rgba(255,182,193,0.35);
+    }
+
+    .text-box {
+      background: rgba(255, 255, 255, 0.8);
+      border-radius: 18px;
+      padding: 30px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+      text-align: center;
+      font-size: 1.05rem;
+      line-height: 1.8;
+      font-weight: 600;
+      color: #333;
+    }
+
+    footer {
+      text-align: center;
+      padding: 25px;
+      font-size: 0.9rem;
+      color: #666;
+      animation: fadeIn 2s ease;
+    }
+
+    .bubble {
+      position: fixed;
+      bottom: -100px;
+      background: rgba(255,255,255,0.7);
+      border-radius: 50%;
+      animation: floatUp 10s infinite ease-in;
+      pointer-events: none;
+      mix-blend-mode: soft-light;
+    }
+
+    @keyframes floatUp {
+      0% { transform: translateY(0) scale(0.8); opacity: 0.8; }
+      100% { transform: translateY(-120vh) scale(1.4); opacity: 0; }
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .btn-float {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      background: linear-gradient(135deg, #fbcfe8, #fef08a, #bfdbfe);
+      border: none;
+      color: #666;
+      padding: 14px 18px;
+      border-radius: 50px;
+      font-weight: 600;
+      cursor: pointer;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      z-index: 1000;
+    }
+
+    .btn-float:hover {
+      transform: translateY(-5px) scale(1.05);
+      box-shadow: 0 6px 20px rgba(0,0,0,0.25);
+    }
+
+    @media (max-width : 812px ){
+      .content { gap: 20px; }
+      .btn-back { top: 15px; left: 15px; padding: 8px 14px; font-size: 0.85rem; }
+    }
+  </style>
+</head>
+
+<body>
+  <a href="index2.html" class="btn-back"><span>✨</span> 返回首頁</a>
+
+  <header>
+    <h1>💛💗🩵 快樂實驗室 Joy Lab 🩵💗💛</h1>
+    <p>用色彩、節奏與笑容，生產出幸福的一天。</p>
+  </header>
+
+  <div class="content">
+    <img src="images/0002.jpg" alt="作品2">
+    <div class="text-box">
+      以柔和曲線與粉紫色調展現女性氣質，加入夢幻與可愛元素，象徵溫柔與自信並存的特質，藉此打破名字帶來的性別誤解，傳達屬於自己的柔軟力量與個人風格。
+    </div>
+    
+    <img src="images/0004.jpg" alt="作品4">
+    <div class="text-box">
+      這是一組以柔和色調設計的食物圖示，結合甜點與料理元素，展現溫馨可愛的視覺風格。適合應用於餐飲介面、菜單設計或品牌插畫，營造親切與愉悅的氛圍。
+    </div>
+    
+    <img src="images/0003.jpg" alt="作品3">
+    <div class="text-box">
+      以溫暖色調繪製的街景插畫，小店外觀各具特色，包含花店、咖啡館、服飾店等，展現療癒又生活感十足的城市氛圍，讓人感受到悠閒與溫度並存的日常風景。
+    </div>
+    
+    <img src="images/0001.jpg" alt="作品1">
+    <div class="text-box">
+      結合宇宙與海洋意象，創造夢幻奇幻的探索氣圈，像徵自由與無限想像。
+    </div>
+  </div>
+
+  <footer>© 2025 Joy Maker | Designed with ☀️ happiness</footer>
+
+  <button class="btn-float" onclick="alert('✨ 今天也要快樂地創造！')">+ 製造快樂</button>
+
+  <script>
+    function createBubble() {
+      const bubble = document.createElement("div");
+      bubble.classList.add("bubble");
+      const size = Math.random() * 60 + 20;
+      bubble.style.width = size + "px";
+      bubble.style.height = size + "px";
+      bubble.style.left = Math.random() * 100 + "vw";
+      bubble.style.animationDuration = 8 + Math.random() * 4 + "s";
+      bubble.style.background = `rgba(255, 255, 255, 0.4)`;
+      document.body.appendChild(bubble);
+      setTimeout(() => bubble.remove(), 12000);
+    }
+    setInterval(createBubble, 900);
+  </script>
+</body>
+</html>
